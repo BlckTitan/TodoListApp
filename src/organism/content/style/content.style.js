@@ -1,9 +1,7 @@
 //styled components
 import Styled from 'styled-components';
 
-const  Container = Styled.div`
-    position: absolute;
-    top: 7rem;
+export const  Container = Styled.div`
     background-color: #fff;
     width: 80%;
     height: Calc(100vh - 14rem);
@@ -19,19 +17,23 @@ const  Container = Styled.div`
         }
         & div.header{
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: end;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid #e8e8e8;
+            h4{
+                color: #1B2F5D;
+            }
             & button{
                 width: 7rem;
                 height: 3.5rem;
                 background-color: #2F88FC;
                 border: 0;
                 border-radius: 0.3rem;
-                color: #fff;
                 font-size: 1rem;
                 font-weight: 600;
+                & .link{
+                    color: #fff;
+                }
             }
         }
         & div.body{
@@ -58,4 +60,3 @@ const  Container = Styled.div`
         }
     }
 `;
-export {Container};

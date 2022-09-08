@@ -1,21 +1,33 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 //icons
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+//global style
+import  {GlobalStyle} from '../../globalStyles/GlobalStyles';
 //style
 import {Container} from './style/content.style'
-export default function Content() {
+export default function Content({RenderContent, title, btnTitle, linkTo}) {
   return (
     <Container>
+      <GlobalStyle/>
         <div>
             <div className='header'>
-                <button>Add Task</button>
+              <h4>{title}</h4>
+              {btnTitle !== "" &&
+                <button><Link to={linkTo} className='link'>{btnTitle}</Link></button>
+              }
             </div>
-            <div className='body'>Content</div>
+            <div className='body'>
+                {<RenderContent/>}
+            </div>
             <div className='footer'>
-                <a href='#'><ArrowLeftIcon/></a>
-                <a href='#'><ArrowRightIcon/></a>
+              {title === "All Todo's" &&
+              <>
+                <a href='/#'><span className='icon'><ArrowLeftIcon/></span></a>
+                <a href='/#'><span className='icon'><ArrowRightIcon/></span></a>
+              </>
+              } 
             </div>
         </div>
     </Container>
