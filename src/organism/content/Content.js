@@ -15,7 +15,9 @@ export default function Content({RenderContent, title, btnTitle, linkTo}) {
             <div className='header'>
               <h4>{title}</h4>
               {btnTitle !== "" &&
-                <button><Link to={linkTo} className='link'>{btnTitle}</Link></button>
+                <Link to={linkTo} className='link'>
+                  <button>{btnTitle}</button>
+                </Link>
               }
             </div>
             <div className='body'>

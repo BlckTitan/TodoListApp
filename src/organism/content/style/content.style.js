@@ -1,6 +1,12 @@
 //styled components
 import Styled from 'styled-components';
-
+/*
+ * #fdcb6e light orange
+ * #00b894 light green
+ * #0984e3 light blue
+ * #fd79a8 light pink
+ * #6c5ce7 light violet
+ */
 export const  Container = Styled.div`
     background-color: #fff;
     width: 80%;
@@ -31,9 +37,7 @@ export const  Container = Styled.div`
                 border-radius: 0.3rem;
                 font-size: 1rem;
                 font-weight: 600;
-                & .link{
-                    color: #fff;
-                }
+                color: #fff;
             }
         }
         & div.body{
