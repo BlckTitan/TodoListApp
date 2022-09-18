@@ -1,35 +1,25 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+//import { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+//Context
+//import { QueryContext } from '../../utilities/DBquery';
 //style
 import {List, Items} from './style/ContentList.style';
 //icons
 import DeleteIcon from '@mui/icons-material/Delete';
+import useFetchAllQuery from '../../utilities/FetchAllQuery';
 
 export default function ContentList() {
-    const [todo, setTodo] = useState(null);
-    const fetchData = async (resource) =>{
-        
-        await fetch(resource)
-        .then((response)=>{
-            if(response.status !== 200){
-                return new Error('Could not fetch data')
-            }else{
-                return response.json();
-            }
-        }).then((data)=>{
-            setTodo(data);
-        }).catch((error)=>{console.log(error)});
-    }
-    useEffect(()=>{
-        fetchData('http://localhost:5000/blogs?_limit=6');
-    }, []);
+    const {data, isLoading, error} = useFetchAllQuery('http://localhost:5000/blogs?_limit=6');
+    
   return (
     <>
         <List>
-           {
-                todo && todo.map((todos) =>(
-                    <Link to={'detail?id='+todos.id} key={todos.id}>
+           {error && <div className='errorMessage'>{error}</div>}
+           {isLoading && <div className='loadingMessage'>LOADING</div>}
+           {    
+                data && data.map((todos) =>(
+                    <Link to={`detail/${todos.id}`} key={todos.id}>
                         <Items 
                             statusColor={(todos.completed) ? '#00b894' : '#fdcb6e'}
                         >

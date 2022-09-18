@@ -10,6 +10,19 @@ import Styled from 'styled-components';
 export const List = Styled.ul`
     width: 100%;
     list-style-type: none;
+    & div.loadingMessage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5rem;
+        color: #e8e8e8;
+        font-weight: 600;
+        width: 100%;
+        height: 100%;
+    }
+    & a{
+        text-decoration: none;
+    }
 `;
 export const Items = Styled.li`   
     display: flex;
@@ -22,6 +35,7 @@ export const Items = Styled.li`
     border-bottom: 1px solid #e8e8e8;
     border-left: 3px solid ${(props) => props.statusColor};
     color: #1B2F5D;
+    text-overflow: ellipsis;
     & div.bodyHeader{
         display: flex;
         justify-content: space-between;

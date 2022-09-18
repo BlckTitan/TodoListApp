@@ -46,21 +46,45 @@ export const  Container = Styled.div`
             }
         & div.footer{
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
+            width: 100%;
             border-top: 1px solid #e8e8e8;
             position: absolute;
             bottom: 0;
-            & a{
+            & div.blogAction{
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
-                width: 3rem;
-                height: 2rem;
-                border: 1px solid #e8e8e8;
-                border-radius: 0.2rem;
-                color: gray;
+                width: 100%;
+                label, span{
+                    font-size: 20px;
+                }
+                label{
+                    display: flex;
+                    align-items: center;
+                    span{
+                        margin-left: 0.5rem;
+                    }
+                }
             }
+            & div.pageNavigation{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                & a{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 3rem;
+                    height: 2rem;
+                    border: 1px solid #e8e8e8;
+                    border-radius: 0.2rem;
+                    color: gray;
+                }
+            }
+            
         }
     }
 `;
