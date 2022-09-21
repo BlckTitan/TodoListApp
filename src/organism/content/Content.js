@@ -27,7 +27,7 @@ export default function Content({RenderContent, title, btnTitle, linkTo}) {
                 {<RenderContent/>}
             </div>
             <div className='footer'>
-              {(blogId !== "" && title !== "All Todo's") && 
+              {(blogId !== "" && title !== "All Todo's" && title !== "Create Todo") && 
                 <div className='blogAction'>
                   {blogStatus === false &&
                     <form>
@@ -39,6 +39,9 @@ export default function Content({RenderContent, title, btnTitle, linkTo}) {
                   }
                   {blogStatus === true &&
                     <span className='success'>Completed</span>
+                  }
+                  { (title !== "Update Todo") &&
+                    <Link to={`/update/${blogId}`} className='link'>Edit</Link>
                   }
                 </div>
               }

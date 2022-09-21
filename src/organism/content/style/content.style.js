@@ -57,15 +57,18 @@ export const  Container = Styled.div`
                 justify-content: flex-start;
                 align-items: center;
                 width: 100%;
-                label, span{
-                    font-size: 20px;
-                }
+                font-size: 20px;
                 label{
                     display: flex;
                     align-items: center;
                     span{
                         margin-left: 0.5rem;
                     }
+                }
+                .link{
+                    text-decoration: none;
+                    margin-left: 1rem;
+                    color: #2F88FC;
                 }
             }
             & div.pageNavigation{

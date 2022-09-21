@@ -15,7 +15,7 @@ export default function RouteEngine() {
           <Route index element={<Home />} />
           <Route path="create" element={<Create />} />
           <Route path="detail/:id" element={<Detail />} />
-          <Route path="update" element={<Update />} />
+          <Route path="update/:id" element={<Update />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

@@ -12,6 +12,7 @@ export const Form = Styled.form`
         padding: 1rem;
         font-size: 1rem;
         border: 0.5px solid #e8e8e8;
+        color: #1B2F5D;
     }
     input{
         height: 4rem;
@@ -27,7 +28,7 @@ export const Form = Styled.form`
         border: 1px solid red;
     }
     button{
-        width: 7rem;
+        width: 8rem;
         height: 3.5rem;
         background-color: #2F88FC;
         border: 0;
