@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //icons
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
@@ -10,8 +10,21 @@ import { StateContext } from '../../utilities/SharedStates';
 //style
 import {Container} from './style/content.style'
 export default function Content({RenderContent, title, btnTitle, linkTo}) {
-  
+  const navigate = useNavigate();
   const {blogId, blogStatus} = useContext(StateContext);
+
+  const handleDelete = (e) =>{
+    e.preventDefault();
+    window.confirm('Are your sure?');
+    
+    blogId &&
+    
+    fetch('http://localhost:5000/blogs/'+blogId, {
+      method: 'DELETE',
+    }).then(()=>{
+      navigate('/');
+    })
+  }
 
   return (
     <Container>
@@ -33,7 +46,7 @@ export default function Content({RenderContent, title, btnTitle, linkTo}) {
                 <div className='blogAction'>
                   {blogStatus === false &&
                     <form>
-                      <label for="completed">
+                      <label htmlfor="completed">
                         <input type="checkbox" id='completed'/>
                         <span className='pending'>Complete Todo</span>
                       </label>
@@ -43,7 +56,12 @@ export default function Content({RenderContent, title, btnTitle, linkTo}) {
                     <span className='success'>Completed</span>
                   }
                   { (title !== "Update Todo") &&
-                    <Link to={`/update/${blogId}`} className='link'>Edit</Link>
+                    <>
+                      <Link to={`/update/${blogId}`} className='link'>Edit</Link>
+                      <span className='danger delete' onClick={(e)=>{
+                        handleDelete(e)
+                      }}>Delete</span>
+                    </>
                   }
                 </div>
               }

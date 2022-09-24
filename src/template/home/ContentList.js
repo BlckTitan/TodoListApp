@@ -1,15 +1,12 @@
 import React from 'react'
 //import { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-//Context
-//import { QueryContext } from '../../utilities/DBquery';
 //style
 import {List, Items} from './style/ContentList.style';
-//icons
-import DeleteIcon from '@mui/icons-material/Delete';
 import useFetchAllQuery from '../../utilities/FetchAllQuery';
 
 export default function ContentList() {
+
     const {data, isLoading, error} = useFetchAllQuery('http://localhost:5000/blogs?_limit=6');
     
   return (
@@ -27,9 +24,6 @@ export default function ContentList() {
                             <div className="text">
                                 <h3>{todos.title}</h3>
                             </div>
-                            <div className='action'>
-                                <span className='icon danger'><DeleteIcon/></span>
-                            </div>
                             </div>
                             <div className='bodyFooter'>
                             <span>{todos.timestamp}</span>
@@ -42,3 +36,14 @@ export default function ContentList() {
     </>
   )
 }
+/**
+ * window.confirm('Are you sure?');
+
+    deleteId &&
+
+    fetch('http://localhost:5000/blogs/'+deleteId, {
+        method: 'DELETE'
+    }).then(()=>{
+        navigate('/');
+    });
+ */

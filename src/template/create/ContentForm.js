@@ -28,7 +28,7 @@ export default function ContentForm() {
       setIsPending(false);
     })
     
-    navigate('../')
+    navigate('/')
   }
   return (
     <>

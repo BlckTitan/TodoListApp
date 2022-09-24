@@ -70,6 +70,10 @@ export const  Container = Styled.div`
                     margin-left: 1rem;
                     color: #2F88FC;
                 }
+                span.delete{
+                    margin-left: 1rem;
+                    cursor: pointer;
+                }
             }
             & div.pageNavigation{
                 display: flex;
