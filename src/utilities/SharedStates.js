@@ -8,7 +8,11 @@ export default function SharedStates(props) {
   const [blogStatus, setBlogStatus] = useState(null);
   return (
     <StateContext.Provider value={
-      {blogId, setBlogId, blogTitle, setBlogTitle, blogStatus, setBlogStatus}
+      {
+        blogId, setBlogId, 
+        blogTitle, setBlogTitle, 
+        blogStatus, setBlogStatus,
+      }
     }>
         {props.children}
     </StateContext.Provider>

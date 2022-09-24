@@ -40,9 +40,11 @@ export default function ContentForm() {
               maxLength={200}
               value={title}
               onChange={(e) => {
-                setTitle(e.target.value); 
-                setCompleted(false);
-                setTimestamp(new Date())}}
+                  setTitle(e.target.value); 
+                  setCompleted(false);
+                  setTimestamp(new Date())
+                }
+              }
           />
           <textarea 
             placeholder='first thing about development is nothing about development'

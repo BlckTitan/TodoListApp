@@ -10,7 +10,9 @@ import { StateContext } from '../../utilities/SharedStates';
 //style
 import {Container} from './style/content.style'
 export default function Content({RenderContent, title, btnTitle, linkTo}) {
+  
   const {blogId, blogStatus} = useContext(StateContext);
+
   return (
     <Container>
       <GlobalStyle/>

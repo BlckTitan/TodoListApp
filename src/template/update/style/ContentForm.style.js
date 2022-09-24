@@ -10,7 +10,7 @@ export const Form = Styled.form`
         width: 60%;
         border-radius: 0.5rem;
         padding: 1rem;
-        font-size: 1rem;
+        font-size: 1.5rem;
         border: 0.5px solid #e8e8e8;
         color: #1B2F5D;
     }
@@ -18,14 +18,12 @@ export const Form = Styled.form`
         height: 4rem;
         margin: 1.5rem 0;
     }
-    input:focus-within{
-        border: 1px solid red;
+    input:focus-within,
+    textarea:focus-within{
+        border: 1px solid #2F88FC;
     }
     textarea{
         height: 12rem;
-    }
-    textarea:focus-within{
-        border: 1px solid red;
     }
     button{
         width: 8rem;
