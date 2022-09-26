@@ -18,7 +18,7 @@ export default function ContentList() {
                 data && data.map((todos) =>(
                     <Link to={`detail/${todos.id}`} key={todos.id}>
                         <Items 
-                            statusColor={(todos.completed) ? '#00b894' : '#fdcb6e'}
+                            statusColor={(todos.completed === "true") ? '#00b894' : '#fdcb6e'}
                         >
                             <div className='bodyHeader'>
                             <div className="text">

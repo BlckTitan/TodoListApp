@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 //icons
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
@@ -8,10 +8,13 @@ import  {GlobalStyle} from '../../globalStyles/GlobalStyles';
 //useContext
 import { StateContext } from '../../utilities/SharedStates';
 //style
-import {Container} from './style/content.style'
-export default function Content({RenderContent, title, btnTitle, linkTo}) {
+import {Container} from './style/content.style';
+
+export default function Content({RenderContent, pageTitle, btnTitle, linkTo}) {
+
   const navigate = useNavigate();
-  const {blogId, blogStatus} = useContext(StateContext);
+  const [completed, setCompleted] = useState(true);
+  const {blogId, blogStatus, blogTitle} = useContext(StateContext);
 
   const handleDelete = (e) =>{
     e.preventDefault();
@@ -31,7 +34,7 @@ export default function Content({RenderContent, title, btnTitle, linkTo}) {
       <GlobalStyle/>
         <div>
             <div className='header'>
-              <h4>{title && title.toUpperCase()}</h4>
+              <h4>{pageTitle && pageTitle.toUpperCase()}</h4>
               {btnTitle !== "" &&
                 <Link to={linkTo} className='link'>
                   <button>{btnTitle}</button>
@@ -42,20 +45,15 @@ export default function Content({RenderContent, title, btnTitle, linkTo}) {
                 {<RenderContent/>}
             </div>
             <div className='footer'>
-              {(blogId !== "" && title !== "All Todo's" && title !== "Create Todo") && 
+              {(blogId !== "" && pageTitle !== "All Todo's" && pageTitle !== "Create Todo") && 
                 <div className='blogAction'>
-                  {blogStatus === false &&
-                    <form>
-                      <label htmlfor="completed">
-                        <input type="checkbox" id='completed'/>
-                        <span className='pending'>Complete Todo</span>
-                      </label>
-                    </form>
+                  {blogStatus === 'false' &&
+                    <span className='pending'>Pending Todo</span>
                   }
-                  {blogStatus === true &&
+                  {blogStatus === 'true' &&
                     <span className='success'>Completed</span>
                   }
-                  { (title !== "Update Todo") &&
+                  { (pageTitle !== "Update Todo") &&
                     <>
                       <Link to={`/update/${blogId}`} className='link'>Edit</Link>
                       <span className='danger delete' onClick={(e)=>{
@@ -65,7 +63,7 @@ export default function Content({RenderContent, title, btnTitle, linkTo}) {
                   }
                 </div>
               }
-              {title === "All Todo's" &&
+              {pageTitle === "All Todo's" &&
                 <div className='pageNavigation'>
                   <a href='/#'><span className='icon'><ArrowLeftIcon/></span></a>
                   <a href='/#'><span className='icon'><ArrowRightIcon/></span></a>

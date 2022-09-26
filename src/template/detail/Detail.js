@@ -9,6 +9,6 @@ export default function Detail() {
   const { blogTitle} = useContext(StateContext)
 
   return (
-    <Content RenderContent={ContentDetail} title={blogTitle} btnTitle="Back" linkTo="../" />
+    <Content RenderContent={ContentDetail} pageTitle={blogTitle} btnTitle="Back" linkTo="../" />
   )
 }

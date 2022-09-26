@@ -5,6 +5,6 @@ import ContentForm from '../update/ContentForm';
 
 export default function Update() {
   return (
-    <Content RenderContent={ContentForm} title="Update Todo" btnTitle="Back" linkTo="../"/>
+    <Content RenderContent={ContentForm} pageTitle="Update Todo" btnTitle="Back" linkTo="../"/>
   )
 }

@@ -4,9 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useFetchAllQuery from '../../utilities/FetchAllQuery';
 //style
 import {Form} from './style/ContentForm.style';
-//icons
-//import DoneIcon from '@mui/icons-material/Done';
-//import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 
 export default function ContentForm() {
 
@@ -15,21 +12,21 @@ export default function ContentForm() {
     const {data: todoDetail, isLoading, error} = useFetchAllQuery(`http://localhost:5000/blogs/`+id);
     const [title, setUpdateTitle] = useState('');
     const [description, setUpdateDescription] = useState('');
-    const [timestamp, setTimestamp] = useState(null);
-    const [completed, setCompleted] = useState('');
+    const [timestamp, setUpdateTimestamp] = useState(null);
+    const [completed, setUpdateCompleted] = useState(null);
     const [isPending, setIsPending] = useState(false);
 
     useEffect(() => {
-      todoDetail && setUpdateTitle(todoDetail.title)
-      todoDetail && setUpdateDescription(todoDetail.description)
-      setCompleted(false);
-      setTimestamp(new Date());
+      todoDetail && setUpdateTitle(todoDetail.title);
+      todoDetail && setUpdateDescription(todoDetail.description);
+      todoDetail && setUpdateCompleted(todoDetail.completed);
+      setUpdateTimestamp(new Date());
     }, [todoDetail]);
 
     const updateTodo = (e) => {
       e.preventDefault();
       const todoData = {title, timestamp, description, completed};
-
+      (completed !== null) &&
       fetch('http://localhost:5000/blogs/'+id, {
         method: 'PUT',
         headers: {'Content-Type':'application/json'},
@@ -52,15 +49,29 @@ export default function ContentForm() {
             maxLength={200}
             value={title}
             onChange={(e) => {
-              setUpdateTitle(e.target.value);        
+              setUpdateTitle(e.target.value);
+              setUpdateCompleted("false");
             }}
         />
         <textarea 
           placeholder="first thing about development is nothing about development"
           value={description}
-          onChange={(e) => setUpdateDescription(e.target.value)}
+          onChange={(e) => {
+            setUpdateDescription(e.target.value);
+            setUpdateCompleted("false");}
+          }
         >
         </textarea>
+        
+        <label>Status
+          <select 
+              value={completed} 
+              onChange={(e)=>{setUpdateCompleted(e.target.value)}
+          }>
+            <option value={true}>Complete</option>
+            <option value={false}>Pending</option>
+          </select>
+        </label>
         <button onClick={(e)=>{updateTodo(e)}}>Update Todo</button>
       </Form>
     </>

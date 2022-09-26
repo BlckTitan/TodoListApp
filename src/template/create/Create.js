@@ -6,6 +6,6 @@ import ContentForm from './ContentForm';
 
 export default function Create() {
   return (
-    <Content RenderContent={ContentForm} title="Create Todo" btnTitle="Back" linkTo="../"/>
+    <Content RenderContent={ContentForm} pageTitle="Create Todo" btnTitle="Back" linkTo="../"/>
   )
 }

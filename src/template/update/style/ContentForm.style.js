@@ -25,6 +25,25 @@ export const Form = Styled.form`
     textarea{
         height: 12rem;
     }
+    label{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 40%;
+        margin: 1rem 0;
+        font-size: 1.5rem;
+        color: #1B2F5D;
+    }
+    select{
+        margin-top: 1rem;
+        padding-left: 1.5rem;
+        border: 1px solid lightblue;
+        border-radius: 5px;
+        height: 3rem;
+        width: 80%;
+        font-size: 1.5rem;
+        color: #1B2F5D;
+    }
     button{
         width: 8rem;
         height: 3.5rem;
@@ -33,7 +52,7 @@ export const Form = Styled.form`
         border-radius: 0.3rem;
         font-size: 1rem;
         font-weight: 600;
-        margin-top: 1.5rem;
+        margin-top: 3.5rem;
         color: #fff;
     }
 `;
