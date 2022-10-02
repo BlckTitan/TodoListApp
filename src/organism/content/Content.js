@@ -27,7 +27,6 @@ export default function Content({RenderContent, pageTitle, btnTitle, linkTo}) {
       const endOffSet = itemOffset + itemsPerPage;
       data && setCurrentItems(data.slice(itemOffset, endOffSet));
       data && setPageCount(Math.ceil(data.length/itemsPerPage));
-      console.log(pageCount)
   }, [itemOffset, itemsPerPage, data]);
 
   const handlePageClick = (e) =>{
