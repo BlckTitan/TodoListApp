@@ -108,9 +108,9 @@
     },
     {
       "title": "First Proerty",
+      "timestamp": "2022-10-02T12:08:26.821Z",
       "description": "navigate to the first property",
-      "completed": "false",
-      "timestamp": "2022-09-21T07:08:21.297Z",
+      "completed": "true",
       "id": 16
     }
   ]

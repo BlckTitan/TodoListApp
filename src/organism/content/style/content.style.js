@@ -41,9 +41,12 @@ export const  Container = Styled.div`
             }
         }
         & div.body{
-                width: 100%;
-                height: Calc(100% - 10rem);
-            }
+            width: 100%;
+            height: Calc(100% - 10rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         & div.footer{
             display: flex;
             justify-content: space-between;
@@ -66,9 +69,9 @@ export const  Container = Styled.div`
                     }
                 }
                 .link{
-                    text-decoration: none;
-                    margin-left: 1rem;
                     color: #2F88FC;
+                    margin-left: 1rem;
+                    text-decoration: none;
                 }
                 span.delete{
                     margin-left: 1rem;
@@ -80,6 +83,21 @@ export const  Container = Styled.div`
                 justify-content: flex-end;
                 align-items: center;
                 width: 100%;
+
+                & .pagination{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    list-style-type: none;
+                    width: auto;
+                    height: 3rem;
+                    color: #2F88FC;
+                    cursor: pointer;
+                    .active{
+                        background-color: #0984e3;
+                        color: #fff;
+                    }
+                }
                 & a{
                     display: flex;
                     justify-content: center;

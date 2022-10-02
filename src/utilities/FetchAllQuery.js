@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-//custom hook 
+import { useState, useEffect, useContext } from "react";
 
 const useFetchAllQuery = (resource) =>{
     const [data, setData] = useState(null);
@@ -18,8 +17,8 @@ const useFetchAllQuery = (resource) =>{
             }
         }).then((data)=>{
             setData(data);
-            setIsLoading(false)
-            setError(null)
+            setIsLoading(false);
+            setError(null);
         }).catch((error)=>{
             if(error.name === "AbortError"){
                 console.log('fetch aborted');

@@ -8,12 +8,14 @@ export default function SharedStates(props) {
   const [blogDescription, setBlogDescription] = useState(null);
   const [blogTimestamp, setBlogTimestamp] = useState(null);
   const [blogStatus, setBlogStatus] = useState(null);
+  const [currentItems, setCurrentItems] = useState(null);
   return (
     <StateContext.Provider value={
       {
         blogId, setBlogId, 
         blogTitle, setBlogTitle, 
-        blogStatus, setBlogStatus
+        blogStatus, setBlogStatus,
+        currentItems, setCurrentItems
       }
     }>
         {props.children}

@@ -9,6 +9,7 @@ import Styled from 'styled-components';
 
 export const List = Styled.ul`
     width: 100%;
+    height: 100%;
     list-style-type: none;
     & div.loadingMessage{
         display: flex;

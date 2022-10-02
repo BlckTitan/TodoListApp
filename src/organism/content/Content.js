@@ -1,21 +1,39 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-//icons
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ReactPaginate from 'react-paginate';
+//data fetch
+import useFetchAllQuery from '../../utilities/FetchAllQuery';
 //global style
 import  {GlobalStyle} from '../../globalStyles/GlobalStyles';
 //useContext
 import { StateContext } from '../../utilities/SharedStates';
 //style
 import {Container} from './style/content.style';
+//icons
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 export default function Content({RenderContent, pageTitle, btnTitle, linkTo}) {
-
+  const [itemOffset, setItemOffset] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const itemsPerPage = 6;
+  //navigation
   const navigate = useNavigate();
   const [completed, setCompleted] = useState(true);
-  const {blogId, blogStatus, blogTitle} = useContext(StateContext);
+  const {blogId, blogStatus, blogTitle, currentItems, setCurrentItems} = useContext(StateContext);
+  const {data} = useFetchAllQuery('http://localhost:5000/blogs');
+   
+  useEffect(()=>{
+      const endOffSet = itemOffset + itemsPerPage;
+      data && setCurrentItems(data.slice(itemOffset, endOffSet));
+      data && setPageCount(Math.ceil(data.length/itemsPerPage));
+      console.log(pageCount)
+  }, [itemOffset, itemsPerPage, data]);
 
+  const handlePageClick = (e) =>{
+      const newOffset = (e.selected * itemsPerPage) % data.length;
+      setItemOffset(newOffset);
+  }
   const handleDelete = (e) =>{
     e.preventDefault();
     window.confirm('Are your sure?');
@@ -33,6 +51,7 @@ export default function Content({RenderContent, pageTitle, btnTitle, linkTo}) {
     <Container>
       <GlobalStyle/>
         <div>
+          
             <div className='header'>
               <h4>{pageTitle && pageTitle.toUpperCase()}</h4>
               {btnTitle !== "" &&
@@ -41,9 +60,14 @@ export default function Content({RenderContent, pageTitle, btnTitle, linkTo}) {
                 </Link>
               }
             </div>
+
+
             <div className='body'>
                 {<RenderContent/>}
             </div>
+
+
+
             <div className='footer'>
               {(blogId !== "" && pageTitle !== "All Todo's" && pageTitle !== "Create Todo") && 
                 <div className='blogAction'>
@@ -63,12 +87,24 @@ export default function Content({RenderContent, pageTitle, btnTitle, linkTo}) {
                   }
                 </div>
               }
-              {pageTitle === "All Todo's" &&
-                <div className='pageNavigation'>
-                  <a href='/#'><span className='icon'><ArrowLeftIcon/></span></a>
-                  <a href='/#'><span className='icon'><ArrowRightIcon/></span></a>
+              { 
+                pageTitle === "All Todo's" &&
+                <div className='pageNavigation'> 
+                  <ReactPaginate
+                    breakLabel="..."
+                    nextLabel={<ArrowRightIcon className='icon right'/>}
+                    onPageChange={(e) => handlePageClick(e)}
+                    pageRangeDisplayed={5}
+                    pageCount={pageCount}
+                    previousLabel={<ArrowLeftIcon className='icon left'/>}
+                    renderOnZeroPageCount={null}
+                    containerClassName="pagination"
+                    pageLinkClassName='page_num'
+                    nextLinkClassName='page_num'
+                    activeLinkClassName='active'
+                  />
                 </div>
-              } 
+              }
             </div>
         </div>
     </Container>
