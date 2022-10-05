@@ -78,12 +78,11 @@ export const  Container = Styled.div`
                     cursor: pointer;
                 }
             }
-            & div.pageNavigation{
+            div.pageNavigation{
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
                 width: 100%;
-
                 & .pagination{
                     display: flex;
                     justify-content: center;
@@ -107,6 +106,10 @@ export const  Container = Styled.div`
                     border: 1px solid #e8e8e8;
                     border-radius: 0.2rem;
                     color: gray;
+                }
+                a:hover{
+                    background-color: lightblue;
+                    color: #fff;
                 }
             }
             
