@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import {DetailContainer} from './style/ContentDetail.Style';
 //custom hook
 import useFetchAllQuery from '../../utilities/FetchAllQuery';
+//context
 import { StateContext } from '../../utilities/SharedStates';
 
 export default function ContentDetail() {

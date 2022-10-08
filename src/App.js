@@ -3,6 +3,8 @@ import RouteEngine from './routeEngine/RouteEngine';
 import Styled from 'styled-components';
 //context
 import SharedStates from './utilities/SharedStates';
+//style
+import './css/style.css';
 
 const Container = Styled.div`
   display:  flex;
