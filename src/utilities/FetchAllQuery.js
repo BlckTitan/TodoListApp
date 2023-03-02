@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 
 const useFetchAllQuery = (resource) =>{
+    
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
@@ -34,5 +35,7 @@ const useFetchAllQuery = (resource) =>{
     }, [resource]);
         
     return {data, isLoading, error}
+
 }
+
 export default useFetchAllQuery;

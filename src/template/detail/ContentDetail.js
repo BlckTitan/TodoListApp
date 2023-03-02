@@ -28,21 +28,12 @@ export default function ContentDetail() {
       {error && <div className='errorMessage'>{error}</div>}
       {isLoading && <div className='loadingMessage'>LOADING</div>}
       {todoDetail && 
-      <div className='detail'>
-        <div>
-          {todoDetail.description}
+        <div className='detail'>
+          <div>
+            {todoDetail.description}
+          </div>
         </div>
-      </div>
       }
     </DetailContainer>
-    
   )
 }
-
-/**
- *id && setBlogId(id)
-  useEffect(()=>{
-    todoDetail && setBlogTitle(todoDetail.title)
-    todoDetail && setBlogStatus(todoDetail.completed)
-  }, []); 
- */

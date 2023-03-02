@@ -9,7 +9,7 @@ import {List, Items} from './style/ContentList.style';
 import useFetchAllQuery from '../../utilities/FetchAllQuery';
 
 export default function ContentList() {
-    const {blogId, blogStatus, blogTitle, currentItems } = useContext(StateContext);
+    const { blogId, blogStatus, blogTitle, currentItems } = useContext(StateContext);
     const {isLoading, error} = useFetchAllQuery('http://localhost:5000/blogs');
     
     
