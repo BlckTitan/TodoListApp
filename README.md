@@ -1,2 +1,1 @@
-# Desert
-My github space for tutorials and projects.
+toDo list app made with react, js, html, json-server
